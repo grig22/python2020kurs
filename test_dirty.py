@@ -20,3 +20,16 @@ def some_random_posts(login, num):
 def test_author(post):
     if 'is_hidden' not in post.keys():
         assert post["user"]["login"] == "jovan"
+
+
+def some_post_ids(num):
+    return [post["id"] for post in D3().posts(per_page=num)]
+
+
+@pytest.mark.parametrize("post_id", some_post_ids(4))
+def test_comments_num(post_id):
+    exp = D3().post(post_id)["comments_count"]
+    act = len(D3().comments(post_id))
+    # далеко не всегда выполняется это условие
+    # очень динамичный ресурс
+    assert act == exp

@@ -22,8 +22,14 @@ class D3:
         assert res.status_code == 200
         return res.json()["comments"]
 
+    # Получить список постов пользователя
     def user_posts(self, login):
         res = requests.get(f"{self.api}/users/{login}/posts/")
-        # print(res.content)
+        assert res.status_code == 200
+        return res.json()
+
+    # Получить список доменов пользователя
+    def user_domains(self, login):
+        res = requests.get(f"{self.api}/users/{login}/domains/")
         assert res.status_code == 200
         return res.json()
