@@ -21,3 +21,9 @@ class D3:
         res = requests.get(f"{self.api}/posts/{post_id}/comments/")
         assert res.status_code == 200
         return res.json()["comments"]
+
+    def user_posts(self, login):
+        res = requests.get(f"{self.api}/users/{login}/posts/")
+        # print(res.content)
+        assert res.status_code == 200
+        return res.json()
