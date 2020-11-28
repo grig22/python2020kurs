@@ -33,3 +33,8 @@ def test_comments_num(post_id):
     # далеко не всегда выполняется это условие
     # очень динамичный ресурс
     assert act == exp
+
+
+@pytest.mark.parametrize("domain", D3().user_domains("mudhoney")["domains"][:4])
+def test_owner(domain):
+    assert domain["owner"]["login"] == "mudhoney"
