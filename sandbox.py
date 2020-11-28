@@ -14,5 +14,8 @@ def debug(st):
 # print()
 # debug(D3().comments(post_id))
 
-debug(D3().user_posts("jovan"))
+posts = D3().user_posts("jovan")
+
+debug(posts)
+print("LENGTHHHHH", len(posts["posts"]))
 

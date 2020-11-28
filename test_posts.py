@@ -18,4 +18,5 @@ def some_random_posts(login, num):
 
 @pytest.mark.parametrize("post", some_random_posts("jovan", 4))
 def test_author(post):
-    assert post["user"]["login"] == "jovan"
+    if 'is_hidden' not in post.keys():
+        assert post["user"]["login"] == "jovan"
