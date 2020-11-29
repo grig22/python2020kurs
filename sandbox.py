@@ -1,13 +1,21 @@
 # import requests
 import json
-import dirty
+from dirty import D3
 
-posts = dirty.posts()
-# print("222", json.dumps(posts, indent=4, ensure_ascii=False))
-# print(len(posts["posts"]))
 
-ids = list()
-for post in posts:
-    ids.append(post["id"])
+def debug(st):
+    re = json.dumps(st, indent=4, ensure_ascii=False)
+    print(re)
 
-print(ids)
+
+# post_id = 2077496
+# debug(D3().post(post_id))
+# print("COMMENTS COUNT", D3().post(post_id)["comments_count"])
+# print()
+# debug(D3().comments(post_id))
+
+posts = D3().user_posts("jovan")
+
+debug(posts)
+print("LENGTHHHHH", len(posts["posts"]))
+
