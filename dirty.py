@@ -7,7 +7,7 @@ class D3:
     def __init__(self):
         self.api = "https://d3.ru/api"
         self.logger = logging.getLogger(type(self).__name__)
-        self.logger.info("OBJECT CREATED")
+        self.logger.info("D3 INIT")
 
     # Получить список постов со всех поддоменов
     def posts(self, page=1, per_page=10, sorting="date_created"):
