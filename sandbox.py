@@ -10,8 +10,8 @@ def debug(st):
     print(re)
 
 
-# validate(instance=D3().domains(), schema=d3schema.DOMAINS)
-validate(instance=D3().posts(), schema=d3schema.POSTS)
+validate(instance=D3().domains(), schema=d3schema.DOMAINS)
+# validate(instance=D3().posts(), schema=d3schema.POSTS)
 
 
 # dmns = D3().domains()

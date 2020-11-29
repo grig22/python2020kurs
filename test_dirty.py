@@ -3,8 +3,11 @@ from dirty import D3
 import random
 from jsonschema import validate
 import d3schema
+import allure
 
 
+@allure.feature('posts')
+@allure.severity(allure.severity_level.TRIVIAL)
 @pytest.mark.parametrize("page", [1, 10])
 @pytest.mark.parametrize("per_page", [1, 25])
 def test_posts_num(testlog, request, page, per_page):
@@ -20,6 +23,8 @@ def some_random_posts(login, num):
     return posts[:num]
 
 
+@allure.feature('posts')
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.mark.parametrize("post", some_random_posts("jovan", 4))
 def test_author(testlog, request, post):
     testlog.info(f"RUN '{request.node.name}'")
@@ -34,6 +39,8 @@ def some_post_ids(per_page):
     return [post["id"] for post in D3().posts(per_page=per_page)]
 
 
+@allure.feature('comments')
+@allure.severity(allure.severity_level.CRITICAL)
 # @pytest.mark.skip(reason="no way of currently testing this")
 @pytest.mark.parametrize("post_id", some_post_ids(4))
 def test_comments_num(testlog, request, post_id):
@@ -47,6 +54,8 @@ def test_comments_num(testlog, request, post_id):
     # assert act == comments
 
 
+@allure.feature('domains')
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.mark.parametrize("domain", D3().user_domains("mudhoney")["domains"][:4])
 def test_owner(testlog, request, domain):
     testlog.info(f"RUN '{request.node.name}'")
@@ -54,6 +63,9 @@ def test_owner(testlog, request, domain):
     assert domain["owner"]["login"] == "mudhoney"
 
 
+@allure.feature('posts')
+@allure.feature('domains')
+@allure.severity(allure.severity_level.TRIVIAL)
 @pytest.mark.parametrize("feed, chhm",
                          [
                              (D3().domains(), d3schema.DOMAINS),
