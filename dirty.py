@@ -52,3 +52,12 @@ class D3:
         self.logger.info(f"STATUS '{res.status_code}'")
         assert res.status_code == 200
         return res.json()
+
+    # Получить список доменов
+    def domains(self):
+        url = f"{self.api}/domains/"
+        self.logger.info(f"url '{url}'")
+        res = requests.get(url)
+        self.logger.info(f"STATUS '{res.status_code}'")
+        assert res.status_code == 200
+        return res.json()

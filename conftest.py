@@ -19,7 +19,7 @@ def testlog():
     return logger
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True, scope="function")
 def current(testlog, request):
     testlog.info(f">>>> START '{request.node.name}'")
     yield
