@@ -1,3 +1,3 @@
-#rm -f allu/*
+rm -rf allu/*
 pytest --alluredir=allu
 allure serve allu

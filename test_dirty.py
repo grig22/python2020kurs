@@ -63,8 +63,7 @@ def test_owner(testlog, request, domain):
     assert domain["owner"]["login"] == "mudhoney"
 
 
-@allure.feature('posts')
-@allure.feature('domains')
+@allure.feature('schema')
 @allure.severity(allure.severity_level.TRIVIAL)
 @pytest.mark.parametrize("feed, chhm",
                          [
